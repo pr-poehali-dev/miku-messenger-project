@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS miku_sessions (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES miku_users(id),
+  token VARCHAR(255) UNIQUE NOT NULL,
+  expires_at TIMESTAMP NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW()
+);

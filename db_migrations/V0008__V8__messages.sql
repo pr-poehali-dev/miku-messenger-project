@@ -1,0 +1,1 @@
+CREATE TABLE miku_messages (id SERIAL PRIMARY KEY, sender_id INTEGER, group_id INTEGER, channel_id INTEGER, dm_conversation_id INTEGER, content TEXT, media_url TEXT, media_type VARCHAR(20), is_removed BOOLEAN DEFAULT FALSE, created_at TIMESTAMP DEFAULT NOW(), updated_at TIMESTAMP DEFAULT NOW());

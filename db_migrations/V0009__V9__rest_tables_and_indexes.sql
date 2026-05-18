@@ -1,0 +1,13 @@
+CREATE TABLE miku_reactions (id SERIAL PRIMARY KEY, message_id INTEGER, user_id INTEGER, emoji VARCHAR(20) NOT NULL, created_at TIMESTAMP DEFAULT NOW(), UNIQUE(message_id, user_id, emoji));
+CREATE TABLE miku_gifts (id SERIAL PRIMARY KEY, name VARCHAR(100) NOT NULL, description TEXT, character_name VARCHAR(100), image_url TEXT, price_rub INTEGER NOT NULL, rarity VARCHAR(20) DEFAULT 'common', created_at TIMESTAMP DEFAULT NOW());
+CREATE TABLE miku_sent_gifts (id SERIAL PRIMARY KEY, gift_id INTEGER, sender_id INTEGER, recipient_id INTEGER, message TEXT, created_at TIMESTAMP DEFAULT NOW());
+CREATE TABLE miku_calls (id SERIAL PRIMARY KEY, caller_id INTEGER, callee_id INTEGER, group_id INTEGER, status VARCHAR(20) DEFAULT 'ringing', started_at TIMESTAMP, ended_at TIMESTAMP, created_at TIMESTAMP DEFAULT NOW());
+CREATE TABLE miku_voice_messages (id SERIAL PRIMARY KEY, message_id INTEGER, audio_url TEXT NOT NULL, duration_sec INTEGER, transcript TEXT, created_at TIMESTAMP DEFAULT NOW());
+CREATE TABLE miku_user_settings (id SERIAL PRIMARY KEY, user_id INTEGER UNIQUE, notifications_enabled BOOLEAN DEFAULT TRUE, sound_enabled BOOLEAN DEFAULT TRUE, theme VARCHAR(20) DEFAULT 'dark', language VARCHAR(10) DEFAULT 'ru', font_size VARCHAR(10) DEFAULT 'medium', show_online_status BOOLEAN DEFAULT TRUE, read_receipts BOOLEAN DEFAULT TRUE, allow_dms_from VARCHAR(20) DEFAULT 'everyone', settings_json JSONB DEFAULT '{}', updated_at TIMESTAMP DEFAULT NOW());
+CREATE TABLE miku_blocked_users (id SERIAL PRIMARY KEY, blocker_id INTEGER, blocked_id INTEGER, created_at TIMESTAMP DEFAULT NOW(), UNIQUE(blocker_id, blocked_id));
+CREATE INDEX idx_miku_msg_group ON miku_messages(group_id);
+CREATE INDEX idx_miku_msg_channel ON miku_messages(channel_id);
+CREATE INDEX idx_miku_msg_dm ON miku_messages(dm_conversation_id);
+CREATE INDEX idx_miku_msg_created ON miku_messages(created_at DESC);
+CREATE INDEX idx_miku_sess_token ON miku_sessions(token);
+CREATE INDEX idx_miku_sess_user ON miku_sessions(user_id);
