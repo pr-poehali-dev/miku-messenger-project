@@ -1,0 +1,5 @@
+{
+  "miku-api": "https://functions.poehali.dev/d087e13e-3caf-4a03-9e1d-a978e7a54321",
+  "miku-auth": "https://functions.poehali.dev/585cc4d5-1c9b-431c-9cb6-d8b70d9d4dc9",
+  "miku-messages": "https://functions.poehali.dev/524b1f77-8eca-42bb-9b3d-777457792fb2"
+}

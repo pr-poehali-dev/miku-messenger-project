@@ -1,0 +1,36 @@
+{
+  "tests": [
+    {
+      "name": "Get messages",
+      "method": "GET",
+      "path": "/messages?group_id=1",
+      "expectedStatus": 200,
+      "expectedBody": {"messages": []},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Get gifts list",
+      "method": "GET",
+      "path": "/gifts/list",
+      "expectedStatus": 200,
+      "expectedBody": {"gifts": []},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Explore channels",
+      "method": "GET",
+      "path": "/explore-channels",
+      "expectedStatus": 200,
+      "expectedBody": {"channels": []},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Public groups",
+      "method": "GET",
+      "path": "/public-groups",
+      "expectedStatus": 200,
+      "expectedBody": {"groups": []},
+      "bodyMatcher": "partial"
+    }
+  ]
+}
